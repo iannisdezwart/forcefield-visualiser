@@ -8,26 +8,20 @@
 #include "mass.hpp"
 #include "forces.hpp"
 #include "rendering.hpp"
+#include "motion.hpp"
 
 using namespace std;
 
-// Set the desired rendering mode here (SINGLE_THREADED or MULTI_THREADED)
-
-#define RENDERING_MODE MULTI_THREADED
-
 int main()
 {
-	// Get the masses from stdin
-
-	get_masses_from_user_input();
-
 	// Store the current timestamp to measure the execution time
 
 	auto start = chrono::high_resolution_clock::now();
 
-	// Render the image
+	// Replace this function with what you want to render
+	// Some example functions are written in `motion.hpp`
 
-	render_image("output/1.png", RENDERING_MODE);
+	motion::four_body();
 
 	// Print the execution time
 
