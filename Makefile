@@ -1,6 +1,6 @@
 forces: forces.o
 	g++ forces.o -o forces `libpng-config --ldflags` -pthread
-	mkdir -p output 
+	mkdir -p output
 	echo "Successfully compiled the program. Now execute it with './forces'"
 
 forces.o: index.cpp
