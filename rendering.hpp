@@ -11,8 +11,8 @@
 
 // Rendering constants
 
-#define WIDTH 1024
-#define HEIGHT 1024
+#define WIDTH 1920
+#define HEIGHT 1080
 const int number_of_threads = thread::hardware_concurrency();
 
 // Create the image
