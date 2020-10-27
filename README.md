@@ -1,5 +1,7 @@
 # Forcefield visualiser
 
+Special credits to [DDunda's C# Field generator](https://github.com/DDunda/Field-generator). This was my main inspiration for this project.
+
 ### Dependencies
 
 You might need to install `libpng-dev`.
