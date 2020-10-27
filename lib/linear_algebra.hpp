@@ -5,7 +5,7 @@
 
 using namespace std;
 
-enum VectorErrors {
+enum LinearAlgebraErrors {
 	WRONG_DIMENSION
 };
 
@@ -175,7 +175,75 @@ class Vector {
 			Vector<2> vector({ cos(angle), sin(angle) });
 			return vector;
 		}
+};
 
+template <int rows, int columns, typename number_type = double>
+class Matrix {
+	public:
+		number_type values[rows][columns];
+
+		Matrix(initializer_list<initializer_list<number_type>> initial_rows = {})
+		{
+			if (initial_rows.size() > 0) {
+				if (initial_rows.size() != rows) throw WRONG_DIMENSION;
+
+				int row = 0;
+
+				for (auto initial_columns : initial_rows) {
+					if (initial_columns.size() != columns) {
+						throw WRONG_DIMENSION;
+					} else {
+						copy(initial_columns.begin(), initial_columns.end(), values[row]);
+					}
+
+					row++;
+				}
+			} else {
+				for (int y = 0; y < rows; y++) {
+					for (int x = 0; x < columns; x++) {
+						values[y][x] = 0;
+					}
+				}
+			}
+		}
+
+		string to_string()
+		{
+			string str = "[ ";
+
+			for (int y = 0; y < rows; y++) {
+				str += "\n\t[ ";
+
+				for (int x = 0; x < columns - 1; x++) {
+					str += std::to_string(values[y][x]) + ", ";
+				}
+
+				str += std::to_string(values[y][columns - 1]) + " ";
+
+				if (y == rows - 1) str += "]";
+				else str += "], ";
+			}
+
+			str += "\n]";
+
+			return str;
+		}
+
+		template <int dimension>
+		Vector<dimension, number_type> operator*(Vector<dimension, number_type> vector)
+		{
+			if (dimension != columns) throw WRONG_DIMENSION;
+
+			Vector<dimension> output_vector;
+
+			for (int i = 0; i < rows; i++) {
+				for (int j = 0; j < dimension; j++) {
+					output_vector[i] += values[i][j] * vector[j];
+				}
+			}
+
+			return output_vector;
+		}
 };
 
 #endif
