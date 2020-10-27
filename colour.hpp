@@ -49,4 +49,34 @@ png::rgb_pixel angle_to_rgb(double angle)
 	}
 }
 
+// This function converts a given `Vector<2> force`
+// to a `png::rgb_pixel` with the correct hue.
+
+png::rgb_pixel force_to_rgb(Vector<2> force)
+{
+	// Get the angle and the length of the vector
+
+	double angle = force.angle();
+
+	// Calculate the corresponding hue
+
+	png::rgb_pixel pixel = angle_to_rgb(angle);
+
+	// Calculate the normalised force
+
+	double normalised_force = tanh(force.length() * 20.0);
+
+	// Set the lightness
+
+	int inverse_red = 255 - pixel.red;
+	int inverse_green = 255 - pixel.green;
+	int inverse_blue = 255 - pixel.blue;
+
+	pixel.red += inverse_red * normalised_force * 0.85;
+	pixel.green += inverse_green * normalised_force * 0.85;
+	pixel.blue += inverse_blue * normalised_force * 0.85;
+
+	return pixel;
+}
+
 #endif
