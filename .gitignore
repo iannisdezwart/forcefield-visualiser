@@ -1,4 +1,5 @@
 forces
 forces.o
 .vscode
-output
+output*
+out.mp4
