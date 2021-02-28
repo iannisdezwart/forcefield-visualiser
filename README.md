@@ -2,7 +2,7 @@
 
 Special credits to [DDunda's C# Field generator](https://github.com/DDunda/Field-generator). This was my main inspiration for this project.
 
-![Demo](https://gfycat.com/meagerfrequentfulmar)
+![Demo Video](https://user-images.githubusercontent.com/38715718/109412904-01b5eb00-79ab-11eb-843e-10393d9d1b69.mp4)
 
 ### Dependencies
 
