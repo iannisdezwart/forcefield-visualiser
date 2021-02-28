@@ -4,7 +4,7 @@ forces: forces.o
 	echo "Successfully compiled the program. Now execute it with './forces'"
 
 forces.o: index.cpp
-	g++ -c index.cpp -o forces.o `libpng-config --cflags`
+	g++ -c index.cpp -o forces.o -O3 `libpng-config --cflags`
 
 clean:
 	rm -f forces forces.o
